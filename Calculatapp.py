@@ -1,0 +1,80 @@
+from tkinter import *
+import tkinter as tk  
+window = tk.Tk()
+window.title("calculatorM")
+window.geometry("300x400")
+window.resizable(width=0,height=0)
+window.configure(bg="Black")
+e = Entry(window,bd=10,bg="Lightgray",font=("Arial", 21),width=30)
+def click(number):
+    e.insert(index=tk.END,string=number)
+def add():
+    e.insert(index=tk.END,string="+")
+def clear():
+    e.delete(0,END)
+def mince():
+    e.insert(index=tk.END,string="-")
+def prd():
+    e.insert(index=tk.END,string="*")
+def divs():
+    e.insert(index=tk.END,string="/")
+def calculat():
+    current = e.get()
+    if "+" in current:
+        list=current.split("+")
+        resul1 = int(list[0])+int(list[1])
+        clear()
+        e.insert(tk.END,string=resul1)
+    elif "-" in current:
+        list=current.split("-")
+        resul2= int(list[0]) - int(list[1])
+        clear()
+        e.insert(tk.END,string=resul2)
+    elif "*" in current:
+        list=current.split("*")
+        resul3= int(list[0]) * int(list[1])
+        clear()
+        e.insert(tk.END,string=resul3)
+    elif "/" in current:
+        list=current.split("/")
+        if int(list[1]) == 0:
+            clear()
+            e.insert(tk.END,string="error")
+        else :
+            resul4= int(list[0]) / int(list[1])
+            clear()
+            e.insert(tk.END,string=resul4)
+e.pack()
+but1 = Button(window,text="1",font=("Arial",19),bg="grey",bd=10,padx=10,pady=5,command=lambda: click(1))
+but1.place(x=10,y=60)
+but2 = Button(window,text="2",bg="Grey",font=("Arial",19),bd=10,padx=10,pady=5,command=lambda: click(2))
+but2.place(x=85,y=60)
+but3 = Button(window,text="3",bg="Grey",font=("Arial",19),bd=10,padx=10,pady=5,command=lambda: click(3))
+but3.place(x=160,y=60)
+but4 = Button(window,text="4",font=("Arial",19),bg="Grey",bd=10,padx=10,pady=5,command=lambda: click(4))
+but4.place(x=10,y=145)
+but5 = Button(window,text="5",bg="Grey",font=("Arial",19),bd=10,padx=10,pady=5,command=lambda: click(5))
+but5.place(x=85,y=145)
+but6 = Button(window,text="6",font=("Arial",19),bg="Grey",bd=10,padx=10,pady=5,command=lambda: click(6))
+but6.place(x=160,y=145)
+but7 = Button(window,text="7",font=("Arial",19),bg="Grey",bd=10,padx=10,pady=5,command=lambda: click(7))
+but7.place(x=10,y=230)
+but8 = Button(window,text="8",bg="Grey",font=("Arial",19),bd=10,padx=10,pady=5,command=lambda: click(8))
+but8.place(x=85,y=230)
+but9 = Button(window,text="9",bg="Grey",font=("Arial",19),bd=10,padx=10,pady=5,command=lambda: click(9))
+but9.place(x=160,y=230)
+but0 = Button(window,text="0",bg="Grey",font=("Arial",19),bd=10,padx=10,pady=5,command=lambda: click(0))
+but0.place(x=10,y=328)
+but10 = Button(window,text="+",bg="yellow",font=("Arial",19),bd=10,padx=10,pady=5,command=add)
+but10.place(x=235,y=60)
+but11 = Button(window,text="-",font=("Arial",19),bg="green",bd=10,padx=10,pady=5,command=mince)
+but11.place(x=235,y=145)
+but12 = Button(window,text="*",font=("Arial",19),bd=10,bg="blue",padx=10,pady=5,command=prd)
+but12.place(x=235,y=230)
+but13 = Button(window,text="/",font=("Arial",19),bg="orange",bd=10,padx=10,pady=5,command=divs)
+but13.place(x=235,y=325)
+but14 = Button(window,text="=",font=("Arial",19),bg="white",bd=10,padx=10,pady=5,command=calculat)
+but14.place(x=85,y=325)
+but15 = Button(window,text="C",font=("Arial",19),bg="red",bd=10,padx=10,pady=5,command=clear)
+but15.place(x=160,y=325)
+window.mainloop()
